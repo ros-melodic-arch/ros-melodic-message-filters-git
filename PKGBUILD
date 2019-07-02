@@ -22,6 +22,7 @@ makedepends=(
 	'ros-build-tools'
 	${ros_makedepends[@]}
 	boost
+	'git'
 )
 
 ros_depends=(
