@@ -6,7 +6,7 @@ url='https://wiki.ros.org/message_filters'
 pkgname='ros-melodic-message-filters-git'
 pkgver='29053c4'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
@@ -21,7 +21,7 @@ makedepends=(
 	'cmake'
 	'ros-build-tools'
 	${ros_makedepends[@]}
-	boost
+	boost1.69
 	'git'
 )
 
@@ -57,7 +57,7 @@ build() {
 
 	# Fix Python2/Python3 conflicts.
 	/usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-	#Workaround for boost signals
+	#Workaround for boost1.69 signals
         sed -i 's/signals//g' ${srcdir}/${_dir}/CMakeLists.txt
 
 	# Build the project.
@@ -66,7 +66,8 @@ build() {
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
 		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
 		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
-		-DSETUPTOOLS_DEB_LAYOUT=OFF
+		-DSETUPTOOLS_DEB_LAYOUT=OFF \
+		 -DBOOST_ROOT=/opt/boost1.69
 	make
 }
 
