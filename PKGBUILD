@@ -6,7 +6,7 @@ url='https://wiki.ros.org/message_filters'
 pkgname='ros-melodic-message-filters-git'
 pkgver='29053c4'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=4
+pkgrel=5
 license=('BSD')
 
 ros_makedepends=(
